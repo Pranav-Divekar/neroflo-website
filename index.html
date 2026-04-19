@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeroFlo — AI Solutions for Companies</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" href="neroflo-favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:    #F5F2EC;
+    --ink:   #1A1916;
+    --ink2:  #5C5A54;
+    --ink3:  #9C9A94;
+    --acc:   #D4510A;
+    --rule:  #DDD9D0;
+    --white: #FFFFFF;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  section {
+    padding: 96px 0;
+    border-top: 1px solid var(--rule);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 40px;
+  }
+
+  .nav-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: var(--ink2);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--ink) !important;
+    color: var(--bg) !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: 600 !important;
+  }
+
+  .nav-cta:hover { background: #2d2c28 !important; }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    padding: 11px 22px;
+    border-radius: 4px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+  }
+
+  .btn-dark  { background: var(--ink); color: var(--bg); }
+  .btn-dark:hover { background: #2d2c28; }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--rule);
+  }
+
+  .btn-outline:hover { border-color: var(--ink2); }
+
+  .btn-acc { background: var(--acc); color: #fff; }
+  .btn-acc:hover { background: #b8440a; }
+
+  /* ── SECTION LABELS ── */
+  .kicker {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 12px;
+  }
+
+  .sec-h {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(1.75rem, 3vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+
+  .sec-sub {
+    font-size: 1rem;
+    color: var(--ink2);
+    max-width: 540px;
+    line-height: 1.65;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 96px 0 88px;
+    border-top: none;
+  }
+
+  .hero-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .hero-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2.4rem, 4vw, 3.4rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 22px;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--ink2); }
+
+  .hero-body {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* ── HERO RIGHT: WHAT WE DO CARD ── */
+  .hero-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-header-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .card-header-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: #FDF0E8;
+    color: var(--acc);
+    border: 1px solid #F5D9C8;
+    padding: 3px 9px;
+    border-radius: 100px;
+  }
+
+  .card-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 14px; }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+
+  .work-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--acc);
+    padding-top: 1px;
+  }
+
+  .work-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 2px;
+  }
+
+  .work-desc {
+    font-size: 0.8rem;
+    color: var(--ink2);
+    line-height: 1.55;
+  }
+
+  .card-footer {
+    padding: 14px 24px;
+    border-top: 1px solid var(--rule);
+    background: #F8F6F1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-footer-text {
+    font-size: 0.78rem;
+    color: var(--ink2);
+  }
+
+  .card-footer-link {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--acc);
+    text-decoration: none;
+  }
+
+  .card-footer-link:hover { text-decoration: underline; }
+
+  /* ── HOW WE WORK ── */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .process-step {
+    background: var(--bg);
+    padding: 32px 24px;
+  }
+
+  .ps-num {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.75rem;
+    font-style: italic;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .ps-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .ps-desc {
+    font-size: 0.83rem;
+    color: var(--ink2);
+    line-height: 1.6;
+  }
+
+  /* ── WHAT WE BUILD ── */
+  .solutions-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 48px;
+  }
+
+  .sol-card {
+    background: var(--bg);
+    padding: 36px 32px;
+  }
+
+  .sol-card:hover { background: var(--white); }
+
+  .sol-tag {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 12px;
+  }
+
+  .sol-title {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.2rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .sol-desc {
+    font-size: 0.875rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .sol-examples {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sol-examples li {
+    font-size: 0.8rem;
+    color: var(--ink3);
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .sol-examples li::before {
+    content: '→';
+    color: var(--acc);
+    flex-shrink: 0;
+    font-size: 0.72rem;
+  }
+
+  /* ── WHY US ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .why-left p {
+    font-size: 1.05rem;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+
+  .why-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .why-item {
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 14px;
+  }
+
+  .why-item:first-child { padding-top: 0; }
+  .why-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .why-dash {
+    color: var(--acc);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding-top: 2px;
+  }
+
+  .why-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .why-desc {
+    font-size: 0.83rem;
+    color: var(--ink2);
+    line-height: 1.6;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 48px; max-width: 680px; }
+  .faq-item { border-bottom: 1px solid var(--rule); }
+
+  .faq-q {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 20px 0;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    line-height: 1.4;
+    transition: color 0.15s;
+  }
+
+  .faq-q:hover { color: var(--acc); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    color: var(--ink3);
+    font-weight: 400;
+    transition: transform 0.2s;
+  }
+
+  .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+  .faq-a { overflow: hidden; max-height: 0; transition: max-height 0.35s ease; }
+
+  .faq-a-in {
+    padding-bottom: 20px;
+    font-size: 0.9rem;
+    color: var(--ink2);
+    line-height: 1.7;
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .contact-left p {
+    font-size: 1rem;
+    color: var(--ink2);
+    line-height: 1.7;
+    margin-bottom: 28px;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .contact-row {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .contact-row-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    min-width: 60px;
+  }
+
+  .contact-row-val {
+    font-size: 0.9rem;
+    color: var(--ink2);
+  }
+
+  .contact-row-val a {
+    color: var(--acc);
+    text-decoration: none;
+  }
+
+  .contact-row-val a:hover { text-decoration: underline; }
+
+  .contact-form {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-field { display: flex; flex-direction: column; gap: 6px; }
+
+  .form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--ink2);
+    letter-spacing: 0.02em;
+  }
+
+  .form-input,
+  .form-textarea {
+    background: var(--bg);
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    padding: 10px 14px;
+    border-radius: 4px;
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+  }
+
+  .form-input:focus,
+  .form-textarea:focus { border-color: var(--ink2); }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder { color: var(--ink3); }
+
+  .form-textarea { resize: vertical; min-height: 100px; line-height: 1.6; }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  /* ── FOUNDERS ── */
+  .founders-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .founder-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: border-color 0.15s;
+  }
+
+  .founder-card:hover { border-color: var(--ink3); }
+
+  .founder-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bg);
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .founder-name {
+    font-family: 'Instrument Serif', serif;
+    font-size: 1.15rem;
+    letter-spacing: -0.01em;
+    margin-bottom: 2px;
+  }
+
+  .founder-role {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--acc);
+    margin-bottom: 10px;
+  }
+
+  .founder-bio {
+    font-size: 0.875rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .founder-contact a {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: border-color 0.15s;
+  }
+
+  .founder-contact a:hover { border-color: var(--ink); }
+
+  @media (max-width: 600px) {
+    .founders-grid { grid-template-columns: 1fr; }
+    .founder-card { flex-direction: column; gap: 16px; }
+  }
+
+  /* ── CONTACT LINK STYLE ── */
+  .contact-row-val a {
+    color: var(--acc);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .contact-row-val a:hover { opacity: 0.75; }
+
+ border-top: 1px solid var(--rule); padding: 64px 0 40px; }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-tagline {
+    font-size: 0.875rem;
+    color: var(--ink2);
+    line-height: 1.65;
+    max-width: 280px;
+    margin: 10px 0 18px;
+  }
+
+  .footer-socials { display: flex; gap: 16px; }
+
+  .footer-socials a {
+    font-size: 0.8rem;
+    color: var(--ink3);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-socials a:hover { color: var(--ink2); }
+
+  .footer-col-title {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 14px;
+  }
+
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+  .footer-links a {
+    font-size: 0.875rem;
+    color: var(--ink2);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: var(--ink); }
+
+  .footer-bottom {
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-copy { font-size: 0.78rem; color: var(--ink3); }
+  .footer-legal { display: flex; gap: 20px; }
+
+  .footer-legal a {
+    font-size: 0.78rem;
+    color: var(--ink3);
+    text-decoration: none;
+  }
+
+  .footer-legal a:hover { color: var(--ink2); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 800px) {
+    .container, nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    .hero-inner { grid-template-columns: 1fr; padding: 0 24px; gap: 40px; }
+    .process-grid { grid-template-columns: 1fr 1fr; }
+    .solutions-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    section { padding: 64px 0; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .footer-grid { grid-template-columns: 1fr; }
+    .process-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">NeroFlo</a>
+    <ul class="nav-links">
+      <li><a href="#solutions">What we build</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#founders">Founders</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="nav-cta">Talk to us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label">AI solutions company</div>
+      <h1>We build AI into<br>your business — <em>end to end</em></h1>
+      <p class="hero-body">
+        NeroFlo is an early-stage AI solutions company. We work with businesses to understand where AI can make a real difference, then build and deploy the software to do it.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-dark">Start a conversation</a>
+        <a href="#solutions" class="btn btn-outline">See what we build</a>
+      </div>
+    </div>
+
+    <!-- WHAT WE DO — replaces fake dashboard -->
+    <div class="hero-card">
+      <div class="card-header">
+        <span class="card-header-title">How an engagement works</span>
+        <span class="card-header-tag">Our approach</span>
+      </div>
+      <div class="card-body">
+        <div class="work-item">
+          <span class="work-num">1.</span>
+          <div>
+            <div class="work-title">We listen first</div>
+            <p class="work-desc">A short call to understand your business, the problem, and whether AI actually helps. No pitch, no obligation.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <span class="work-num">2.</span>
+          <div>
+            <div class="work-title">We scope and propose</div>
+            <p class="work-desc">We come back with a clear scope, timeline, and cost. You decide if it's worth doing.</p>
+          </div>
+        </div>
+        <div class="work-item">
+          <span class="work-num">3.</span>
+          <div>
+            <div class="work-title">We build and hand it over</div>
+            <p class="work-desc">We build the solution, test it with your team, and make sure your people can actually use and maintain it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-footer">
+        <span class="card-footer-text">Typically 4–12 weeks per project</span>
+        <a href="#contact" class="card-footer-link">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE BUILD -->
+<section id="solutions">
+  <div class="container">
+    <div class="kicker">What we build</div>
+    <h2 class="sec-h">AI solutions, not off-the-shelf software</h2>
+    <p class="sec-sub">Every project is different. Here are the kinds of problems we typically solve.</p>
+
+    <div class="solutions-grid">
+      <div class="sol-card">
+        <div class="sol-tag">Automation</div>
+        <div class="sol-title">Cutting out manual, repetitive work</div>
+        <p class="sol-desc">If your team is spending hours on tasks that follow a pattern — reading documents, routing requests, extracting data, writing first drafts — we can usually automate most of it.</p>
+        <ul class="sol-examples">
+          <li>Document processing and data extraction</li>
+          <li>Email and support ticket classification</li>
+          <li>Report generation from structured data</li>
+          <li>Internal approval and routing workflows</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-tag">Internal tools</div>
+        <div class="sol-title">Making your data actually usable</div>
+        <p class="sol-desc">Most companies have useful data locked in PDFs, spreadsheets, or siloed systems. We build tools that let your team ask questions and get answers without digging through files.</p>
+        <ul class="sol-examples">
+          <li>Internal knowledge bases your team can query</li>
+          <li>Search across contracts, policies, past work</li>
+          <li>Onboarding tools built on existing documentation</li>
+          <li>Custom dashboards with AI-generated summaries</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-tag">Customer-facing</div>
+        <div class="sol-title">AI that your customers interact with</div>
+        <p class="sol-desc">We build AI features that sit inside your existing product or website — things like smart assistants, recommendation systems, or automated responses that actually sound like your brand.</p>
+        <ul class="sol-examples">
+          <li>Support bots trained on your actual documentation</li>
+          <li>Product recommendation or configurator flows</li>
+          <li>Personalised content and communications</li>
+          <li>Conversational interfaces for complex products</li>
+        </ul>
+      </div>
+
+      <div class="sol-card">
+        <div class="sol-tag">Data and analysis</div>
+        <div class="sol-title">Turning raw data into decisions</div>
+        <p class="sol-desc">AI is genuinely good at finding patterns in large amounts of unstructured text — feedback, reviews, call transcripts, emails. We build pipelines that surface what matters.</p>
+        <ul class="sol-examples">
+          <li>Customer feedback analysis at scale</li>
+          <li>Competitor monitoring and summarisation</li>
+          <li>Call transcript analysis and tagging</li>
+          <li>Anomaly detection with plain-language alerts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="process">
+  <div class="container">
+    <div class="kicker">How we work</div>
+    <h2 class="sec-h">From first conversation to working software</h2>
+    <p class="sec-sub">We keep the process simple. No long discovery phases, no consultancy overhead.</p>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="ps-num">01</div>
+        <div class="ps-title">Discovery call</div>
+        <p class="ps-desc">We talk through your problem, your existing setup, and your team. This usually takes an hour. We'll tell you honestly if we think AI is the right tool.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">02</div>
+        <div class="ps-title">Scoping and proposal</div>
+        <p class="ps-desc">We write up what we'd build, how long it would take, and what it would cost. No ambiguity. You decide if you want to move forward.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">03</div>
+        <div class="ps-title">Build and iterate</div>
+        <p class="ps-desc">We build in short cycles and check in regularly. You see progress early and give feedback before anything is finalised.</p>
+      </div>
+      <div class="process-step">
+        <div class="ps-num">04</div>
+        <div class="ps-title">Handover and support</div>
+        <p class="ps-desc">We hand over working software your team can actually use. We document everything, train your people, and stay available for questions.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="container">
+    <div class="kicker">Why work with us</div>
+    <h2 class="sec-h">We're a small team. That's the point.</h2>
+
+    <div class="why-grid">
+      <div class="why-left">
+        <p>
+          We're not a large agency with account managers in the middle. The people you talk to are the people who build. That means faster feedback loops, less overhead, and a team that's genuinely invested in whether the solution works.
+        </p>
+        <p>
+          We're early, which means we're selective about the projects we take on. We work with companies where we think we can do our best work and where the problem is real.
+        </p>
+        <p>
+          We won't pitch you something you don't need. If we don't think AI is the right answer for your problem, we'll say so in the first call.
+        </p>
+      </div>
+
+      <div class="why-right">
+        <div class="why-item">
+          <span class="why-dash">—</span>
+          <div>
+            <div class="why-title">No juniors on your project</div>
+            <p class="why-desc">Senior engineers and AI specialists on every engagement. We don't staff projects with junior developers once the contract is signed.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-dash">—</span>
+          <div>
+            <div class="why-title">Fixed scope, fixed price</div>
+            <p class="why-desc">We agree on what we're building before we start. No open-ended retainers, no scope creep, no surprises on the invoice.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-dash">—</span>
+          <div>
+            <div class="why-title">You own everything</div>
+            <p class="why-desc">All code, models, and documentation belong to you. We don't retain IP, and you're never dependent on us to keep the lights on.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <span class="why-dash">—</span>
+          <div>
+            <div class="why-title">Honest about what AI can do</div>
+            <p class="why-desc">AI is genuinely useful for specific problems and genuinely bad for others. We'll tell you which camp yours falls into before we take any money.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDERS -->
+<section id="founders">
+  <div class="container">
+    <div class="kicker">The founders</div>
+    <h2 class="sec-h">Who you'll actually talk to</h2>
+    <p class="sec-sub">NeroFlo is built by two people. When you reach out, you speak directly with us — not an account manager.</p>
+
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-avatar">P</div>
+        <div class="founder-info">
+          <div class="founder-name">Pranav</div>
+          <div class="founder-role">Co-founder</div>
+          <p class="founder-bio">Handles the engineering side — building websites, software, deployment, hosting, and making sure everything we ship actually runs without issues.</p>
+          <div class="founder-contact">
+            <a href="tel:+918805653571">+91 88056 53571</a>
+          </div>
+        </div>
+      </div>
+      <div class="founder-card">
+        <div class="founder-avatar">V</div>
+        <div class="founder-info">
+          <div class="founder-name">Varad</div>
+          <div class="founder-role">Co-founder</div>
+          <p class="founder-bio">Works on the AI side — building models, designing automation flows, and figuring out how to apply the right AI solution to the right business problem.</p>
+          <div class="founder-contact">
+            <a href="tel:+917757833316">+91 77578 33316</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="kicker">FAQ</div>
+    <h2 class="sec-h">Questions we get asked often</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How much does a project typically cost?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">It depends on the scope. A focused automation project might take two to four weeks and cost significantly less than a full product build. We scope every project individually and put a fixed price in the proposal, so you know what you're committing to before work begins. Get in touch and we can give you a rough sense after a short call.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Do we need to have technical people on our side?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">No. We've worked with teams that have no in-house technical staff. We'll handle the build and make sure whoever needs to use or maintain the system is properly trained. It helps to have someone who can act as a point of contact and make decisions, but that person doesn't need to be a developer.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          How long does a typical project take?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">Most projects land somewhere between four and twelve weeks. Simpler automations can be faster. More complex, multi-part systems take longer. We'll give you a clear timeline in the proposal before anything starts.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What happens after the project is done?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">We hand over the code, documentation, and anything else you need. We run a handover session with your team and stay available for questions for a period after delivery. If you want ongoing support or want to build something else, we can discuss that separately — but there's no obligation to keep working with us.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          We're not sure AI is right for our problem. Can we still reach out?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">Yes, that's actually a good reason to reach out. We're happy to have an honest conversation about whether AI makes sense for what you're trying to do. If it doesn't, we'll tell you. We'd rather have a short call and be upfront than waste your time with a proposal for something that won't work.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What industries do you work with?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-in">We don't limit ourselves to a single industry. The skills that make a good AI solution — understanding the problem, working with the right models, building reliable software — apply across sectors. We've looked at problems in logistics, finance, legal, and operations. If the problem is interesting and the fit is right, we're open to it.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="kicker">Get in touch</div>
+    <h2 class="sec-h">Tell us about your problem</h2>
+
+    <div class="contact-grid">
+      <div class="contact-left">
+        <p>
+          Fill in the form and click Send. It opens your email app with a draft ready to go — just hit send from there. We'll come back within a day or two.
+        </p>
+        <p>
+          There's no sales process. It's just a conversation to figure out if we can help.
+        </p>
+
+        <div class="contact-detail">
+          <div class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-val"><a href="mailto:founder@neroflo.in">founder@neroflo.in</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Phone</span>
+            <span class="contact-row-val">
+              <a href="tel:+917757833316">+91 77578 33316</a><br>
+              <a href="tel:+918805653571">+91 88056 53571</a>
+            </span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Based</span>
+            <span class="contact-row-val">Pune, India — working globally</span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-row-label">Response</span>
+            <span class="contact-row-val">Usually within 1–2 business days</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Your name *</label>
+            <input class="form-input" id="f-name" type="text" placeholder="Name" />
+            <span class="form-error" id="e-name"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Company</label>
+            <input class="form-input" id="f-company" type="text" placeholder="Company name" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label class="form-label">Your email *</label>
+            <input class="form-input" id="f-email" type="email" placeholder="you@company.com" />
+            <span class="form-error" id="e-email"></span>
+          </div>
+          <div class="form-field">
+            <label class="form-label">Phone number</label>
+            <input class="form-input" id="f-phone" type="tel" placeholder="+91 98765 43210" />
+          </div>
+        </div>
+        <div class="form-field">
+          <label class="form-label">What are you looking for? *</label>
+          <div class="service-options">
+            <label class="service-opt">
+              <input type="radio" name="service" value="AI Product" id="s-product" />
+              <span class="service-label">AI Product</span>
+            </label>
+            <label class="service-opt">
+              <input type="radio" name="service" value="Custom Software" id="s-software" />
+              <span class="service-label">Custom Software</span>
+            </label>
+            <label class="service-opt">
+              <input type="radio" name="service" value="AI Custom Solution" id="s-solution" />
+              <span class="service-label">AI Custom Solution</span>
+            </label>
+            <label class="service-opt">
+              <input type="radio" name="service" value="Not sure yet" id="s-unsure" />
+              <span class="service-label">Not sure yet</span>
+            </label>
+          </div>
+          <span class="form-error" id="e-service"></span>
+        </div>
+        <div class="form-field">
+          <label class="form-label">What are you trying to solve? *</label>
+          <textarea class="form-textarea" id="f-message" placeholder="Describe the problem. Don't worry about making it perfect — we'll ask questions."></textarea>
+          <span class="form-error" id="e-message"></span>
+        </div>
+        <button class="btn btn-dark" id="submitBtn" onclick="openMailDraft()" style="width:100%;text-align:center;">
+          Send enquiry →
+        </button>
+        <p style="font-size:0.75rem;color:var(--ink3);margin-top:10px;text-align:center;line-height:1.5;">
+          Opens your email app with everything filled in. Just hit send.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" style="font-family:'Instrument Serif',serif;font-size:1.6rem;color:var(--ink);text-decoration:none;">NeroFlo</a>
+        <p class="footer-tagline">An AI solutions company. We build custom AI software for businesses that have a real problem and want a practical answer.</p>
+        <div class="footer-socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">X / Twitter</a>
+          <a href="#">GitHub</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#solutions">What we build</a></li>
+          <li><a href="#process">How we work</a></li>
+          <li><a href="#why">Why us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Get in touch</div>
+        <ul class="footer-links">
+          <li><a href="mailto:founder@neroflo.in">founder@neroflo.in</a></li>
+          <li><a href="tel:+917757833316">+91 77578 33316</a></li>
+          <li><a href="tel:+918805653571">+91 88056 53571</a></li>
+          <li><a href="#contact">Send a message</a></li>
+        </ul>
+        <div style="margin-top:20px;">
+          <div style="font-size:0.78rem;color:var(--ink3);line-height:1.6;">Pune, India<br>Working with clients globally</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2026 NeroFlo. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy policy</a>
+        <a href="#">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .service-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 2px;
+  }
+
+  .service-opt {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+  }
+
+  .service-opt input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .service-label {
+    display: block;
+    width: 100%;
+    padding: 9px 14px;
+    border: 1.5px solid var(--rule);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink2);
+    background: var(--bg);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .service-opt input[type="radio"]:checked + .service-label {
+    border-color: var(--acc);
+    background: #FDF0E8;
+    color: var(--acc);
+    font-weight: 600;
+  }
+
+  .service-opt:hover .service-label {
+    border-color: var(--ink3);
+  }
+
+  .form-error {
+    font-size: 0.78rem;
+    color: #b8440a;
+    margin-top: 5px;
+    display: none;
+  }
+
+  .form-error.show { display: block; }
+  .form-input.invalid, .form-textarea.invalid { border-color: #b8440a; }
+</style>
+
+<script>
+  // ── FAQ ────────────────────────────────────────────────────
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const answer = item.querySelector('.faq-a');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  // ── CONTACT FORM → MAILTO ──────────────────────────────────
+  function openMailDraft() {
+    // Clear errors
+    ['name','email','service','message'].forEach(f => {
+      const err = document.getElementById('e-' + f);
+      if (err) { err.textContent = ''; err.classList.remove('show'); }
+    });
+    ['f-name','f-email','f-message'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.classList.remove('invalid');
+    });
+
+    const name    = document.getElementById('f-name').value.trim();
+    const company = document.getElementById('f-company').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const phone   = document.getElementById('f-phone').value.trim();
+    const message = document.getElementById('f-message').value.trim();
+    const service = document.querySelector('input[name="service"]:checked');
+
+    // Validate
+    let ok = true;
+    if (!name) {
+      document.getElementById('e-name').textContent = 'Please enter your name.';
+      document.getElementById('e-name').classList.add('show');
+      document.getElementById('f-name').classList.add('invalid');
+      ok = false;
+    }
+    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      document.getElementById('e-email').textContent = 'Please enter a valid email address.';
+      document.getElementById('e-email').classList.add('show');
+      document.getElementById('f-email').classList.add('invalid');
+      ok = false;
+    }
+    if (!service) {
+      document.getElementById('e-service').textContent = 'Please select what you are looking for.';
+      document.getElementById('e-service').classList.add('show');
+      ok = false;
+    }
+    if (!message || message.length < 10) {
+      document.getElementById('e-message').textContent = 'Please describe your problem briefly.';
+      document.getElementById('e-message').classList.add('show');
+      document.getElementById('f-message').classList.add('invalid');
+      ok = false;
+    }
+    if (!ok) return;
+
+    // Build email body — keep it short so mailto URL stays under browser limits
+    const lines = [
+      'Hi NeroFlo team,',
+      '',
+      'Name:    ' + name,
+      company  ? 'Company: ' + company : null,
+      'Email:   ' + email,
+      phone    ? 'Phone:   ' + phone   : null,
+      'Service: ' + service.value,
+      '',
+      message,
+      '',
+      '— ' + name,
+    ].filter(l => l !== null).join('\n');
+
+    const subject = 'Enquiry from ' + name + (company ? ' (' + company + ')' : '') + ' — ' + service.value;
+
+    // Keep encoded body under 1500 chars to avoid browser truncation
+    let bodyText = lines;
+    while (encodeURIComponent(bodyText).length > 1500) {
+      bodyText = bodyText.substring(0, bodyText.length - 50);
+    }
+
+    const mailto = 'mailto:founder@neroflo.in'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body='    + encodeURIComponent(bodyText);
+
+    // window.open is the most reliable method — works on desktop and mobile
+    window.open(mailto, '_self');
+
+    // Button feedback
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = '✓ Opening your email app…';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send enquiry →';
+      btn.disabled = false;
+    }, 4000);
+  }
+</script>
+</body>
+</html>
